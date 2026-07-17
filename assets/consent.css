@@ -1,0 +1,342 @@
+.samson-consent-banner,
+.samson-consent-backdrop,
+.samson-consent-settings {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+}
+
+.samson-consent-banner[hidden],
+.samson-consent-backdrop[hidden],
+.samson-consent-settings[hidden] {
+  display: none !important;
+}
+
+.samson-consent-banner {
+  position: fixed;
+  z-index: 2147483000;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #d9ded6;
+  background: #fff;
+  color: #171b16;
+  box-shadow: 0 -12px 34px rgba(23, 27, 22, 0.16);
+}
+
+.samson-consent-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 22px 0;
+}
+
+.samson-consent-copy {
+  max-width: 760px;
+}
+
+.samson-consent-copy h2,
+.samson-consent-dialog h2 {
+  margin: 0;
+  color: #171b16;
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+
+.samson-consent-copy p,
+.samson-consent-dialog p {
+  margin: 8px 0 0;
+  color: #50584f;
+  font-size: 0.94rem;
+  line-height: 1.52;
+}
+
+.samson-consent-kicker {
+  margin: 0 0 5px !important;
+  color: #226b4f !important;
+  font-size: 0.72rem !important;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.samson-consent-links,
+.samson-consent-dialog__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
+.samson-consent-links a,
+.samson-consent-dialog__links a {
+  color: #174f3c;
+  font-weight: 750;
+  text-underline-offset: 3px;
+}
+
+.samson-consent-actions {
+  display: grid;
+  flex: 0 0 220px;
+  gap: 8px;
+}
+
+.samson-consent-button {
+  min-height: 44px;
+  padding: 10px 15px;
+  border: 1px solid #aeb7ad;
+  border-radius: 6px;
+  background: #fff;
+  color: #171b16;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.samson-consent-button:hover {
+  background: #f4f6f3;
+}
+
+.samson-consent-button:focus-visible,
+.samson-consent-close:focus-visible,
+.samson-consent-settings:focus-visible,
+.samson-consent-switch input:focus-visible + span {
+  outline: 3px solid rgba(34, 107, 79, 0.28);
+  outline-offset: 2px;
+}
+
+.samson-consent-button--primary {
+  border-color: #226b4f;
+  background: #226b4f;
+  color: #fff;
+}
+
+.samson-consent-button--primary:hover {
+  background: #174f3c;
+}
+
+.samson-consent-button--text {
+  border-color: transparent;
+  background: transparent;
+  color: #174f3c;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.samson-consent-backdrop {
+  position: fixed;
+  z-index: 2147483001;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(12, 16, 13, 0.62);
+}
+
+.samson-consent-dialog {
+  width: min(640px, 100%);
+  max-height: min(760px, calc(100vh - 40px));
+  overflow: auto;
+  border-radius: 8px;
+  background: #fff;
+  color: #171b16;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+  padding: 24px;
+}
+
+.samson-consent-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.samson-consent-close {
+  display: grid;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid #d9ded6;
+  border-radius: 50%;
+  background: #fff;
+  color: #171b16;
+  font: inherit;
+  font-size: 1.45rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.samson-consent-options {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.samson-consent-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 0;
+  border: 1px solid #d9ded6;
+  border-radius: 7px;
+  background: #fbfcfa;
+  padding: 14px;
+  color: #171b16;
+  cursor: pointer;
+}
+
+.samson-consent-option > div {
+  display: grid;
+  gap: 3px;
+}
+
+.samson-consent-option strong {
+  font-size: 0.95rem;
+}
+
+.samson-consent-option span {
+  color: #596158;
+  font-size: 0.82rem;
+  font-weight: 550;
+  line-height: 1.4;
+}
+
+.samson-consent-always {
+  flex: 0 0 auto;
+  color: #226b4f !important;
+  font-weight: 800 !important;
+}
+
+.samson-consent-switch {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 46px;
+  width: 46px;
+  height: 26px;
+}
+
+.samson-consent-switch input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.samson-consent-switch span {
+  width: 46px;
+  height: 26px;
+  border-radius: 13px;
+  background: #bbc2ba;
+  transition: background 160ms ease;
+}
+
+.samson-consent-switch span::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: transform 160ms ease;
+}
+
+.samson-consent-switch input:checked + span {
+  background: #226b4f;
+}
+
+.samson-consent-switch input:checked + span::after {
+  transform: translateX(20px);
+}
+
+.samson-consent-switch input:disabled + span {
+  opacity: 0.5;
+}
+
+.samson-consent-dialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.samson-consent-dialog__actions .samson-consent-button {
+  flex: 1 1 150px;
+}
+
+.samson-consent-settings {
+  position: fixed;
+  z-index: 2147482999;
+  left: 14px;
+  bottom: 14px;
+  min-height: 40px;
+  padding: 9px 13px;
+  border: 1px solid #c5ccc4;
+  border-radius: 6px;
+  background: #fff;
+  color: #174f3c;
+  box-shadow: 0 4px 18px rgba(23, 27, 22, 0.15);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.samson-consent-modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 720px) {
+  .samson-consent-banner__inner {
+    display: grid;
+    gap: 16px;
+    width: min(100% - 24px, 620px);
+    padding: 18px 0 calc(18px + env(safe-area-inset-bottom));
+  }
+
+  .samson-consent-actions {
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .samson-consent-button--text {
+    grid-column: 1 / -1;
+  }
+
+  .samson-consent-dialog {
+    padding: 20px;
+  }
+
+  .samson-consent-option {
+    gap: 12px;
+  }
+
+  .samson-consent-settings {
+    bottom: calc(10px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 430px) {
+  .samson-consent-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .samson-consent-button--text {
+    grid-column: auto;
+  }
+
+  .samson-consent-dialog__actions {
+    display: grid;
+  }
+
+  .samson-consent-option {
+    align-items: flex-start;
+  }
+}

@@ -37,6 +37,7 @@
   }
 
   function storeClickIds() {
+    if (!window.SamsonConsent || !window.SamsonConsent.canMeasure()) return;
     var params = new URLSearchParams(window.location.search);
     ["gclid", "gbraid", "wbraid"].forEach(function (key) {
       var value = params.get(key);
@@ -58,12 +59,14 @@
   }
 
   function hydrateForm(form) {
-    ["gclid", "gbraid", "wbraid"].forEach(function (key) {
-      var value = window.localStorage.getItem("samson_" + key);
-      if (value) {
-        ensureHiddenField(form, key).value = value;
-      }
-    });
+    if (window.SamsonConsent && window.SamsonConsent.canMeasure()) {
+      ["gclid", "gbraid", "wbraid"].forEach(function (key) {
+        var value = window.localStorage.getItem("samson_" + key);
+        if (value) {
+          ensureHiddenField(form, key).value = value;
+        }
+      });
+    }
 
     var emailField = form.querySelector('input[name="email"]');
     var replyToField = form.querySelector("#reply-to-field, [name=\"_replyto\"]");
@@ -132,6 +135,9 @@
 
   loadGoogleTag();
   storeClickIds();
+  window.addEventListener("samson:consent-changed", function (event) {
+    if (event.detail && event.detail.measurement) storeClickIds();
+  });
   updateHeader();
   scrollToHashTarget();
   window.setTimeout(scrollToHashTarget, 250);
