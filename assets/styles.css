@@ -201,6 +201,42 @@ p {
   background: var(--green);
 }
 
+.local-work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.local-work-grid figure {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.local-work-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.local-work-grid figcaption {
+  padding: .75rem .85rem;
+  color: var(--muted);
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.local-work-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--green);
+  font-weight: 900;
+}
+
 .quote-form {
   display: grid;
   gap: .85rem;
@@ -306,6 +342,7 @@ input[type="file"]::file-selector-button {
   .site-footer,
   .split,
   .grid,
+  .local-work-grid,
   .form-grid {
     grid-template-columns: 1fr;
   }
