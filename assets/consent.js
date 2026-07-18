@@ -129,10 +129,10 @@
   }
 
   function addStylesheet() {
-    if (document.querySelector('link[href="/assets/consent.css"]')) return;
+    if (document.querySelector('link[href^="/assets/consent.css"]')) return;
     var stylesheet = document.createElement("link");
     stylesheet.rel = "stylesheet";
-    stylesheet.href = "/assets/consent.css";
+    stylesheet.href = "/assets/consent.css?v=20260718";
     document.head.appendChild(stylesheet);
   }
 

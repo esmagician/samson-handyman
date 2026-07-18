@@ -3,6 +3,7 @@
   var FORM_CONVERSION_LABEL = "AW-17897197249/GH7eCKa30sccEMGdhtZC";
   var CONTACT_CONVERSION_LABEL = "AW-17897197249/W58oCKm30sccEMGdhtZC";
   var header = document.querySelector("[data-header]");
+  var primaryNav = header && header.querySelector(".site-nav");
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () {
@@ -14,6 +15,60 @@
   function updateHeader() {
     if (!header) return;
     header.classList.toggle("is-scrolled", window.scrollY > 12);
+    var mobileActions = document.querySelector(".mobile-actions");
+    if (mobileActions) {
+      mobileActions.classList.toggle("is-visible", window.scrollY > 280);
+    }
+  }
+
+  function setupNavigation() {
+    if (!header || !primaryNav) return;
+
+    primaryNav.innerHTML = [
+      '<a href="/#services">Services</a>',
+      '<a href="/photos/">Work</a>',
+      '<a href="/#proof">Reviews</a>',
+      '<a href="/#areas">Areas</a>',
+      '<a href="/#contact">Contact</a>'
+    ].join("");
+
+    var toggle = document.createElement("button");
+    toggle.className = "nav-toggle";
+    toggle.type = "button";
+    toggle.setAttribute("aria-label", "Open navigation");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.innerHTML = "<span></span><span></span><span></span>";
+    header.querySelector(".header-inner").appendChild(toggle);
+
+    function closeNavigation() {
+      header.classList.remove("nav-open");
+      document.body.classList.remove("menu-open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Open navigation");
+    }
+
+    toggle.addEventListener("click", function () {
+      var isOpen = header.classList.toggle("nav-open");
+      document.body.classList.toggle("menu-open", isOpen);
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+    });
+
+    primaryNav.addEventListener("click", closeNavigation);
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 980) closeNavigation();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") closeNavigation();
+    });
+  }
+
+  function setupMobileActions() {
+    var actions = document.createElement("nav");
+    actions.className = "mobile-actions";
+    actions.setAttribute("aria-label", "Quick contact");
+    actions.innerHTML = '<a href="tel:+447912758192">Call Samson</a><a href="https://wa.me/447912758192">WhatsApp</a>';
+    document.body.appendChild(actions);
   }
 
   function scrollToHashTarget() {
@@ -133,6 +188,8 @@
     });
   }
 
+  setupNavigation();
+  setupMobileActions();
   loadGoogleTag();
   storeClickIds();
   window.addEventListener("samson:consent-changed", function (event) {
