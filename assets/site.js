@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.innerHTML = [
       '<a href="/#services">Services</a>',
       '<a href="/photos/">Work</a>',
+      '<a href="/letting-agent-property-maintenance/">For agents</a>',
       '<a href="/#proof">Reviews</a>',
       '<a href="/#areas">Areas</a>',
       '<a href="/contact/">Contact</a>'

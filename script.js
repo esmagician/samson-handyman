@@ -24,13 +24,22 @@
   function setupNavigation() {
     if (!header || !primaryNav) return;
 
-    primaryNav.innerHTML = [
+    var isAgencyPage = document.body.classList.contains("agency-page");
+    primaryNav.innerHTML = (isAgencyPage ? [
+      '<a href="#agency-services">Services</a>',
+      '<a href="/photos/">Work</a>',
+      '<a href="#agency-process">How it works</a>',
+      '<a href="#agency-proof">Reviews</a>',
+      '<a href="#agency-areas">Areas</a>',
+      '<a href="#agency-enquiry">Enquire</a>'
+    ] : [
       '<a href="/#services">Services</a>',
       '<a href="/photos/">Work</a>',
+      '<a href="/letting-agent-property-maintenance/">For agents</a>',
       '<a href="/#proof">Reviews</a>',
       '<a href="/#areas">Areas</a>',
       '<a href="/#contact">Contact</a>'
-    ].join("");
+    ]).join("");
 
     var toggle = document.createElement("button");
     toggle.className = "nav-toggle";

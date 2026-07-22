@@ -589,6 +589,151 @@ img {
     url("/assets/work/work-16.jpg") center/cover no-repeat;
 }
 
+.agency-hero {
+  min-height: min(82svh, 780px);
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(90deg, rgba(15, 15, 12, 0.94) 0%, rgba(15, 15, 12, 0.78) 52%, rgba(15, 15, 12, 0.32) 100%),
+    url("/assets/work/work-29-fitted-wardrobe-assembly.jpg") center/cover no-repeat;
+}
+
+.agency-page .page-hero-inner {
+  max-width: 900px;
+}
+
+.agency-page .page-hero h1 {
+  max-width: 860px;
+}
+
+.agency-intro {
+  background: var(--paper);
+}
+
+.agency-note {
+  padding: 16px 18px;
+  border-left: 4px solid var(--yellow);
+  background: #fff;
+}
+
+.agency-services {
+  background: #fff;
+}
+
+.agency-service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.agency-service-grid .info-card {
+  min-height: 238px;
+}
+
+.agency-card-number {
+  display: block;
+  margin-bottom: 28px;
+  color: var(--green);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.agency-service-grid .info-card p {
+  margin-bottom: 0;
+}
+
+.agency-process {
+  background: var(--charcoal);
+  color: #fff;
+}
+
+.agency-process h2 {
+  color: #fff;
+}
+
+.agency-step-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 1px;
+  background: rgba(255, 255, 255, 0.16);
+  list-style: none;
+}
+
+.agency-step-grid li {
+  min-height: 210px;
+  padding: 26px 24px;
+  background: var(--charcoal);
+  counter-increment: agency-step;
+}
+
+.agency-step-grid {
+  counter-reset: agency-step;
+}
+
+.agency-step-grid li::before {
+  content: "0" counter(agency-step);
+  display: block;
+  margin-bottom: 30px;
+  color: var(--yellow);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.agency-step-grid strong,
+.agency-step-grid span {
+  display: block;
+}
+
+.agency-step-grid strong {
+  font-size: 1.08rem;
+}
+
+.agency-step-grid span {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+}
+
+.agency-area-copy {
+  margin: 0 0 18px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.agency-contact-details {
+  display: grid;
+  gap: 10px;
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.agency-contact-details p {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 12px;
+  margin: 0;
+}
+
+.agency-contact-details strong {
+  color: var(--yellow);
+}
+
+.agency-contact-details a {
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+
+.agency-page #agency-services,
+.agency-page #agency-proof,
+.agency-page #agency-areas,
+.agency-page #agency-enquiry,
+.agency-page #agency-faq {
+  scroll-margin-top: 104px;
+}
+
 .page-hero-inner {
   max-width: 820px;
 }
@@ -1174,6 +1319,11 @@ img {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .agency-service-grid,
+  .agency-step-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .form-grid,
   .faq-grid {
     grid-template-columns: 1fr;
@@ -1242,6 +1392,11 @@ img {
     padding: 108px 0 46px;
   }
 
+  .agency-hero {
+    min-height: calc(100svh - 68px);
+    background-position: 58% center;
+  }
+
   .page-hero h1 {
     font-size: 2.35rem;
     line-height: 1.05;
@@ -1257,8 +1412,25 @@ img {
   .photo-grid,
   .service-proof-grid,
   .service-photo-grid,
-  .proof-highlights {
+  .proof-highlights,
+  .agency-service-grid,
+  .agency-step-grid {
     grid-template-columns: 1fr;
+  }
+
+  .agency-service-grid .info-card,
+  .agency-step-grid li {
+    min-height: 0;
+  }
+
+  .agency-card-number,
+  .agency-step-grid li::before {
+    margin-bottom: 18px;
+  }
+
+  .agency-contact-details p {
+    grid-template-columns: 1fr;
+    gap: 2px;
   }
 
   .work-strip .photo-grid img {
