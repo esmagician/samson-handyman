@@ -17,7 +17,7 @@
     header.classList.toggle("is-scrolled", window.scrollY > 12);
     var mobileActions = document.querySelector(".mobile-actions");
     if (mobileActions) {
-      mobileActions.classList.toggle("is-visible", window.scrollY > 280);
+      mobileActions.classList.add("is-visible");
     }
   }
 
@@ -35,7 +35,7 @@
     ] : [
       '<a href="/#services">Services</a>',
       '<a href="/photos/">Work</a>',
-      '<a href="/letting-agent-property-maintenance/">For agents</a>',
+      '<a href="/letting-agent-property-maintenance/">Landlords &amp; agents</a>',
       '<a href="/#proof">Reviews</a>',
       '<a href="/#areas">Areas</a>',
       '<a href="/#contact">Contact</a>'
@@ -74,7 +74,7 @@
 
   function setupMobileActions() {
     var actions = document.createElement("nav");
-    actions.className = "mobile-actions";
+    actions.className = "mobile-actions is-visible";
     actions.setAttribute("aria-label", "Quick contact");
     actions.innerHTML = '<a href="tel:+447912758192">Call Samson</a><a href="https://wa.me/447912758192">WhatsApp</a>';
     document.body.appendChild(actions);
@@ -120,6 +120,24 @@
     field.name = name;
     form.appendChild(field);
     return field;
+  }
+
+  function createSubmissionToken() {
+    if (window.crypto && typeof window.crypto.randomUUID === "function") {
+      return window.crypto.randomUUID();
+    }
+    return Date.now().toString(36) + "-" + Math.random().toString(36).slice(2);
+  }
+
+  function setSuccessRedirect(form) {
+    var token = createSubmissionToken();
+    ensureHiddenField(form, "_next").value =
+      "https://www.samsonhandyman.com/thank-you/?submitted=" + encodeURIComponent(token);
+    try {
+      window.sessionStorage.setItem("samson_pending_form_" + token, "1");
+    } catch (error) {
+      // Continue when session storage is unavailable; the form still needs to submit.
+    }
   }
 
   function hydrateForm(form) {
@@ -184,17 +202,36 @@
         event.preventDefault();
         form.dataset.adsSubmitting = "true";
         hydrateForm(form);
+        setSuccessRedirect(form);
 
         var formStatus = form.querySelector(".form-status, #form-status");
         if (formStatus) {
           formStatus.textContent = "Sending your quote request by email...";
         }
 
-        reportAdsConversion(FORM_CONVERSION_LABEL, null, function () {
-          form.submit();
-        });
+        form.submit();
       });
     });
+  }
+
+  function reportConfirmedFormSuccess() {
+    if (!document.querySelector("[data-form-success]")) return;
+
+    var token = new URLSearchParams(window.location.search).get("submitted");
+    if (!token || token.length > 120) return;
+
+    var storageKey = "samson_form_conversion_" + token;
+    try {
+      var pendingKey = "samson_pending_form_" + token;
+      if (window.sessionStorage.getItem(pendingKey) !== "1") return;
+      if (window.sessionStorage.getItem(storageKey)) return;
+      window.sessionStorage.setItem(storageKey, "reported");
+      window.sessionStorage.removeItem(pendingKey);
+    } catch (error) {
+      return;
+    }
+
+    reportAdsConversion(FORM_CONVERSION_LABEL);
   }
 
   setupNavigation();
@@ -212,4 +249,5 @@
   window.addEventListener("hashchange", scrollToHashTarget);
   setupContactTracking();
   setupFormTracking();
+  reportConfirmedFormSuccess();
 })();

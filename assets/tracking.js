@@ -29,6 +29,35 @@ function hydrateClickIdFields() {
   });
 }
 
+function ensureHiddenField(form, name) {
+  let field = form.querySelector(`[name="${name}"]`);
+  if (field) return field;
+
+  field = document.createElement('input');
+  field.type = 'hidden';
+  field.name = name;
+  form.appendChild(field);
+  return field;
+}
+
+function createSubmissionToken() {
+  if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+    return window.crypto.randomUUID();
+  }
+  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+}
+
+function setSuccessRedirect(form) {
+  const token = createSubmissionToken();
+  ensureHiddenField(form, '_next').value =
+    `https://www.samsonhandyman.com/thank-you/?submitted=${encodeURIComponent(token)}`;
+  try {
+    window.sessionStorage.setItem(`samson_pending_form_${token}`, '1');
+  } catch (error) {
+    // Continue when session storage is unavailable; the form still needs to submit.
+  }
+}
+
 function reportAdsConversion(sendTo, url) {
   let navigated = false;
   const callback = function () {
@@ -75,19 +104,26 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (event) => {
       if (!form.checkValidity()) return;
       event.preventDefault();
-      let submitted = false;
-      const submitOnce = () => {
-        if (submitted) return;
-        submitted = true;
-        form.submit();
-      };
-      window.gtag('event', 'conversion', {
-        send_to: SAMSON_TRACKING.formSubmit,
-        value: 1.0,
-        currency: 'GBP',
-        event_callback: submitOnce
-      });
-      window.setTimeout(submitOnce, 900);
+      setSuccessRedirect(form);
+      form.submit();
     });
   });
+
+  if (document.querySelector('[data-form-success]')) {
+    const token = new URLSearchParams(window.location.search).get('submitted');
+    if (token && token.length <= 120) {
+      const storageKey = `samson_form_conversion_${token}`;
+      let alreadyReported = false;
+      try {
+        const pendingKey = `samson_pending_form_${token}`;
+        if (window.sessionStorage.getItem(pendingKey) !== '1') return;
+        alreadyReported = window.sessionStorage.getItem(storageKey) === 'reported';
+        if (!alreadyReported) window.sessionStorage.setItem(storageKey, 'reported');
+        window.sessionStorage.removeItem(pendingKey);
+      } catch (error) {
+        return;
+      }
+      if (!alreadyReported) reportAdsConversion(SAMSON_TRACKING.formSubmit);
+    }
+  }
 });

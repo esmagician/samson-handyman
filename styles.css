@@ -598,6 +598,15 @@ img {
     url("/assets/work/work-29-fitted-wardrobe-assembly.jpg") center/cover no-repeat;
 }
 
+.confirmation-hero {
+  min-height: min(72svh, 680px);
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(90deg, rgba(15, 15, 12, 0.96) 0%, rgba(15, 15, 12, 0.82) 58%, rgba(15, 15, 12, 0.48) 100%),
+    url("/assets/work/work-30-room-wall-preparation.jpg") center/cover no-repeat;
+}
+
 .agency-page .page-hero-inner {
   max-width: 900px;
 }
@@ -618,6 +627,96 @@ img {
 
 .agency-services {
   background: #fff;
+}
+
+.agency-offers {
+  background: var(--paper);
+}
+
+.agency-offer-intro {
+  max-width: 850px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.agency-offer-intro a {
+  color: var(--green);
+  font-weight: 900;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.agency-offer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.agency-offer-card {
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(45, 38, 26, 0.08);
+}
+
+.agency-offer-card.featured {
+  border: 2px solid var(--green);
+}
+
+.agency-offer-label {
+  margin: 0 0 20px;
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.agency-offer-card h3 {
+  margin: 0;
+  font-size: 1.28rem;
+}
+
+.agency-offer-price {
+  margin: 18px 0;
+  color: var(--ink);
+  font-size: 1.62rem;
+  font-weight: 950;
+  line-height: 1.2;
+}
+
+.agency-offer-price span {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.agency-offer-card > p:not(.agency-offer-label):not(.agency-offer-price) {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.agency-offer-detail {
+  margin-bottom: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+
+.agency-scope-note {
+  margin-top: 18px;
+  padding: 18px 20px;
+  border-left: 4px solid var(--yellow);
+  background: #fff;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.agency-scope-note strong {
+  color: var(--ink);
 }
 
 .agency-service-grid {
@@ -727,6 +826,7 @@ img {
 }
 
 .agency-page #agency-services,
+.agency-page #hmo-offers,
 .agency-page #agency-proof,
 .agency-page #agency-areas,
 .agency-page #agency-enquiry,
@@ -1320,6 +1420,7 @@ img {
   }
 
   .agency-service-grid,
+  .agency-offer-grid,
   .agency-step-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1414,6 +1515,7 @@ img {
   .service-photo-grid,
   .proof-highlights,
   .agency-service-grid,
+  .agency-offer-grid,
   .agency-step-grid {
     grid-template-columns: 1fr;
   }

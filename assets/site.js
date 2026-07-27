@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.innerHTML = [
       '<a href="/#services">Services</a>',
       '<a href="/photos/">Work</a>',
-      '<a href="/letting-agent-property-maintenance/">For agents</a>',
+      '<a href="/letting-agent-property-maintenance/">Landlords &amp; agents</a>',
       '<a href="/#proof">Reviews</a>',
       '<a href="/#areas">Areas</a>',
       '<a href="/contact/">Contact</a>'
@@ -67,14 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const mobileActions = document.createElement('nav');
-  mobileActions.className = 'mobile-actions';
+  mobileActions.className = 'mobile-actions is-visible';
   mobileActions.setAttribute('aria-label', 'Quick contact');
   mobileActions.innerHTML = '<a href="tel:+447912758192">Call Samson</a><a href="https://wa.me/447912758192">WhatsApp</a>';
   document.body.appendChild(mobileActions);
 
-  const updateMobileActions = () => {
-    mobileActions.classList.toggle('is-visible', window.scrollY > 280);
-  };
-  updateMobileActions();
-  window.addEventListener('scroll', updateMobileActions, { passive: true });
 });
