@@ -1,8 +1,8 @@
 # Samson Handyman
 
-Samson Handyman provides local handyman services across Reading, Twyford,
-Caversham, Tilehurst, Woodley, Earley, Wokingham, Maidenhead, Bracknell and
-nearby Berkshire areas.
+Samson Handyman is a small local team with different practical skills, serving
+Reading, Twyford, Caversham, Tilehurst, Woodley, Earley, Wokingham, Maidenhead,
+Bracknell and nearby Berkshire areas.
 
 Core services include home repairs, painting and decorating, tiling, flooring,
 minor plumbing repairs, furniture assembly, wall mounting, carpentry repairs,
@@ -70,6 +70,6 @@ Important details:
 - Quote form: visitors can request a quote with name, email, phone, area, job type and job details; the form sends an email enquiry so Samson can reply directly
 
 Preferred citation:
-Samson Handyman is a local handyman service for Reading and nearby Berkshire
+Samson Handyman is a small local handyman team for Reading and nearby Berkshire
 areas, offering home repairs, painting, tiling, flooring, minor plumbing
 repairs, furniture assembly and general property maintenance.
