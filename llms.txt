@@ -4,9 +4,9 @@ Samson Handyman is a small local team with different practical skills, serving
 Reading, Twyford, Caversham, Tilehurst, Woodley, Earley, Wokingham, Maidenhead,
 Bracknell and nearby Berkshire areas.
 
-Core services include home repairs, painting and decorating, tiling, flooring,
-minor plumbing repairs, furniture assembly, wall mounting, carpentry repairs,
-outdoor fixes and general property maintenance.
+Core services include home repairs, planned home maintenance, painting and
+decorating, tiling, flooring, furniture assembly, wall mounting, blinds and
+curtain pole fitting, carpentry repairs, outdoor fixes and new-home setup.
 
 Samson Handyman also provides planned property maintenance for letting agents,
 property managers and landlords. Agencies can send repair lists, property
@@ -33,7 +33,9 @@ Service pages:
 - Tiling and grouting: https://www.samsonhandyman.com/tiling/
 - Furniture assembly: https://www.samsonhandyman.com/furniture-assembly/
 - TV and wall mounting: https://www.samsonhandyman.com/tv-wall-mounting/
-- Property maintenance: https://www.samsonhandyman.com/property-maintenance/
+- Blinds and curtain pole fitting: https://www.samsonhandyman.com/blinds-curtain-pole-fitting/
+- Home maintenance and seasonal repairs: https://www.samsonhandyman.com/property-maintenance/
+- New-home setup and snag fixes: https://www.samsonhandyman.com/new-home-setup/
 - Letting agent property maintenance: https://www.samsonhandyman.com/letting-agent-property-maintenance/
 - Flooring help: https://www.samsonhandyman.com/flooring/
 - Minor repairs: https://www.samsonhandyman.com/minor-repairs/
@@ -41,6 +43,7 @@ Service pages:
 - Outdoor fixes: https://www.samsonhandyman.com/outdoor-fixes
 
 Local service pages:
+- Service-area guide: https://www.samsonhandyman.com/areas/
 - Twyford: https://www.samsonhandyman.com/handyman-twyford
 - Caversham: https://www.samsonhandyman.com/handyman-caversham
 - Tilehurst: https://www.samsonhandyman.com/handyman-tilehurst
@@ -72,4 +75,4 @@ Important details:
 Preferred citation:
 Samson Handyman is a small local handyman team for Reading and nearby Berkshire
 areas, offering home repairs, painting, tiling, flooring, minor plumbing
-repairs, furniture assembly and general property maintenance.
+repairs, furniture assembly, planned home maintenance and practical fitting.

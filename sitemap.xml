@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.samsonhandyman.com/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -49,8 +49,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.samsonhandyman.com/blinds-curtain-pole-fitting/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.samsonhandyman.com/new-home-setup/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.samsonhandyman.com/property-maintenance/</loc>
-    <lastmod>2026-07-26</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -68,7 +80,7 @@
   </url>
   <url>
     <loc>https://www.samsonhandyman.com/minor-repairs/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -77,6 +89,12 @@
     <lastmod>2026-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.samsonhandyman.com/areas/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.samsonhandyman.com/privacy-policy/</loc>
@@ -158,13 +176,13 @@
   </url>
   <url>
     <loc>https://www.samsonhandyman.com/carpentry-repairs</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.samsonhandyman.com/outdoor-fixes</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -607,6 +607,41 @@ img {
     url("/assets/work/work-08.jpg") center/cover no-repeat;
 }
 
+.repairs-page-hero {
+  background:
+    linear-gradient(90deg, rgba(15, 15, 12, 0.92) 0%, rgba(15, 15, 12, 0.8) 54%, rgba(15, 15, 12, 0.4) 100%),
+    url("/assets/work/work-26-bathroom-shower-tiling.jpg") center 44%/cover no-repeat;
+  background-image:
+    linear-gradient(90deg, rgba(15, 15, 12, 0.92) 0%, rgba(15, 15, 12, 0.8) 54%, rgba(15, 15, 12, 0.4) 100%),
+    image-set(
+      url("/assets/work/work-26-bathroom-shower-tiling.webp") type("image/webp") 1x,
+      url("/assets/work/work-26-bathroom-shower-tiling.jpg") type("image/jpeg") 1x
+    );
+  background-position: center, center 44%;
+  background-size: auto, cover;
+}
+
+.areas-page-hero,
+.maintenance-page-hero {
+  background:
+    linear-gradient(90deg, rgba(15, 15, 12, 0.92) 0%, rgba(15, 15, 12, 0.78) 54%, rgba(15, 15, 12, 0.4) 100%),
+    url("/assets/work/work-31-exterior-front-painting.jpg") center/cover no-repeat;
+}
+
+.outdoor-page-hero {
+  background:
+    linear-gradient(90deg, rgba(15, 15, 12, 0.9) 0%, rgba(15, 15, 12, 0.74) 54%, rgba(15, 15, 12, 0.32) 100%),
+    url("/assets/work/work-33-garden-pergola-bench.jpg") center/cover no-repeat;
+  background-image:
+    linear-gradient(90deg, rgba(15, 15, 12, 0.9) 0%, rgba(15, 15, 12, 0.74) 54%, rgba(15, 15, 12, 0.32) 100%),
+    image-set(
+      url("/assets/work/work-33-garden-pergola-bench.webp") type("image/webp") 1x,
+      url("/assets/work/work-33-garden-pergola-bench.jpg") type("image/jpeg") 1x
+    );
+  background-position: center;
+  background-size: cover;
+}
+
 .agency-hero {
   min-height: min(82svh, 780px);
   display: flex;
@@ -957,6 +992,15 @@ img {
 
 .service-photo-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.scope-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.scope-section {
+  background: #f2ecdf;
 }
 
 .info-card,

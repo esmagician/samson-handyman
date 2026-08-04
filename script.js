@@ -37,7 +37,7 @@
       '<a href="/photos/">Work</a>',
       '<a href="/letting-agent-property-maintenance/">Landlords &amp; agents</a>',
       '<a href="/#proof">Reviews</a>',
-      '<a href="/#areas">Areas</a>',
+      '<a href="/areas/">Areas</a>',
       '<a href="/#contact">Contact</a>'
     ]).join("");
 
