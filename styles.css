@@ -8,6 +8,7 @@
   --yellow: #f2b928;
   --yellow-deep: #d99a00;
   --green: #4d6f5a;
+  --green-deep: #315b47;
   --green-soft: #edf4ee;
   --shadow: 0 22px 50px rgba(36, 31, 22, 0.12);
   --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -210,11 +211,18 @@ img {
 .eyebrow,
 .section-label {
   margin: 0 0 14px;
-  color: var(--yellow);
+  color: var(--green-deep);
   font-size: 0.82rem;
   font-weight: 900;
   letter-spacing: 0;
   text-transform: uppercase;
+}
+
+.hero .eyebrow,
+.page-hero .eyebrow,
+.quote-section .section-label,
+.agency-process .section-label {
+  color: var(--yellow);
 }
 
 .hero h1,
@@ -391,6 +399,13 @@ img {
   margin-bottom: 0;
 }
 
+p.lead-copy {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
 .services {
   background: #fff;
 }
@@ -418,7 +433,8 @@ img {
 
 .service-card summary {
   display: flex;
-  align-items: flex-start;
+  min-height: 44px;
+  align-items: center;
   justify-content: space-between;
   gap: 14px;
   cursor: pointer;
@@ -581,6 +597,12 @@ img {
   background:
     linear-gradient(90deg, rgba(15, 15, 12, 0.88) 0%, rgba(15, 15, 12, 0.72) 55%, rgba(15, 15, 12, 0.36) 100%),
     url("/assets/work/work-01.jpg") center/cover no-repeat;
+  background-image:
+    linear-gradient(90deg, rgba(15, 15, 12, 0.88) 0%, rgba(15, 15, 12, 0.72) 55%, rgba(15, 15, 12, 0.36) 100%),
+    image-set(
+      url("/assets/work/work-01.webp") type("image/webp") 1x,
+      url("/assets/work/work-01.jpg") type("image/jpeg") 1x
+    );
 }
 
 .painting-page-hero {
@@ -599,6 +621,20 @@ img {
   background:
     linear-gradient(90deg, rgba(15, 15, 12, 0.9) 0%, rgba(15, 15, 12, 0.76) 52%, rgba(15, 15, 12, 0.34) 100%),
     url("/assets/work/work-29-fitted-wardrobe-assembly.jpg") center/cover no-repeat;
+  background-image:
+    linear-gradient(90deg, rgba(15, 15, 12, 0.9) 0%, rgba(15, 15, 12, 0.76) 52%, rgba(15, 15, 12, 0.34) 100%),
+    image-set(
+      url("/assets/work/work-29-fitted-wardrobe-assembly.webp") type("image/webp") 1x,
+      url("/assets/work/work-29-fitted-wardrobe-assembly.jpg") type("image/jpeg") 1x
+    );
+}
+
+.blinds-page-hero {
+  background:
+    linear-gradient(90deg, rgba(15, 15, 12, 0.95) 0%, rgba(15, 15, 12, 0.8) 58%, rgba(15, 15, 12, 0.5) 100%),
+    repeating-linear-gradient(0deg, #9a8a6d 0 16px, #d7cfbf 16px 20px);
+  background-position: center;
+  background-size: auto, cover;
 }
 
 .flooring-page-hero {
@@ -626,6 +662,12 @@ img {
   background:
     linear-gradient(90deg, rgba(15, 15, 12, 0.92) 0%, rgba(15, 15, 12, 0.78) 54%, rgba(15, 15, 12, 0.4) 100%),
     url("/assets/work/work-31-exterior-front-painting.jpg") center/cover no-repeat;
+  background-image:
+    linear-gradient(90deg, rgba(15, 15, 12, 0.92) 0%, rgba(15, 15, 12, 0.78) 54%, rgba(15, 15, 12, 0.4) 100%),
+    image-set(
+      url("/assets/work/work-31-exterior-front-painting.webp") type("image/webp") 1x,
+      url("/assets/work/work-31-exterior-front-painting.jpg") type("image/jpeg") 1x
+    );
 }
 
 .outdoor-page-hero {
@@ -649,6 +691,12 @@ img {
   background:
     linear-gradient(90deg, rgba(15, 15, 12, 0.94) 0%, rgba(15, 15, 12, 0.78) 52%, rgba(15, 15, 12, 0.32) 100%),
     url("/assets/work/work-29-fitted-wardrobe-assembly.jpg") center/cover no-repeat;
+  background-image:
+    linear-gradient(90deg, rgba(15, 15, 12, 0.94) 0%, rgba(15, 15, 12, 0.78) 52%, rgba(15, 15, 12, 0.32) 100%),
+    image-set(
+      url("/assets/work/work-29-fitted-wardrobe-assembly.webp") type("image/webp") 1x,
+      url("/assets/work/work-29-fitted-wardrobe-assembly.jpg") type("image/jpeg") 1x
+    );
 }
 
 .confirmation-hero {
@@ -1058,10 +1106,15 @@ img {
 
 .service-photo-card img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   height: auto;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
   background: #f2ecdf;
+}
+
+.service-photo-card img.photo-focus-path {
+  object-position: center 62%;
 }
 
 .service-photo-copy {
@@ -1146,6 +1199,14 @@ img {
   font-weight: 800;
 }
 
+.area-list a {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  margin: -10px -14px;
+  padding: 10px 14px;
+}
+
 .quote-section {
   background: var(--charcoal);
   color: #fff;
@@ -1163,12 +1224,19 @@ img {
   color: var(--yellow);
 }
 
-.contact-panel,
 .quote-form {
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.06);
   overflow: hidden;
+}
+
+.contact-panel .contact-row {
+  border-color: var(--line);
+}
+
+.contact-panel .contact-row span {
+  color: var(--green-deep);
 }
 
 .quote-form {
@@ -1206,7 +1274,10 @@ img {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   padding: 12px 13px;
-  font: inherit;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
   color: #fff;
   background: rgba(255, 255, 255, 0.1);
   outline: none;
@@ -1428,6 +1499,9 @@ img {
     grid-template-columns: 1fr;
     gap: 0;
     padding: 8px 24px 18px;
+    max-height: calc(100svh - 68px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
     background: rgba(22, 22, 18, 0.98);
     box-shadow: 0 18px 28px rgba(0, 0, 0, 0.24);
   }
@@ -1452,6 +1526,42 @@ img {
   .hero {
     min-height: min(82svh, 760px);
     padding-top: 112px;
+    background-image:
+      linear-gradient(90deg, rgba(15, 15, 12, 0.9) 0%, rgba(15, 15, 12, 0.76) 48%, rgba(15, 15, 12, 0.3) 100%),
+      url("/assets/work/work-29-fitted-wardrobe-assembly-960.webp");
+  }
+
+  .photo-page-hero {
+    background-image:
+      linear-gradient(90deg, rgba(15, 15, 12, 0.88) 0%, rgba(15, 15, 12, 0.72) 55%, rgba(15, 15, 12, 0.36) 100%),
+      url("/assets/work/work-01-960.webp");
+  }
+
+  .handyman-page-hero,
+  .agency-hero {
+    background-image:
+      linear-gradient(90deg, rgba(15, 15, 12, 0.92) 0%, rgba(15, 15, 12, 0.78) 54%, rgba(15, 15, 12, 0.38) 100%),
+      url("/assets/work/work-29-fitted-wardrobe-assembly-960.webp");
+  }
+
+  .repairs-page-hero {
+    background-image:
+      linear-gradient(90deg, rgba(15, 15, 12, 0.92) 0%, rgba(15, 15, 12, 0.8) 54%, rgba(15, 15, 12, 0.4) 100%),
+      url("/assets/work/work-26-bathroom-shower-tiling-960.webp");
+  }
+
+  .areas-page-hero,
+  .maintenance-page-hero {
+    background-image:
+      linear-gradient(90deg, rgba(15, 15, 12, 0.92) 0%, rgba(15, 15, 12, 0.78) 54%, rgba(15, 15, 12, 0.4) 100%),
+      url("/assets/work/work-31-exterior-front-painting-960.webp");
+    background-position: center, 32% center;
+  }
+
+  .outdoor-page-hero {
+    background-image:
+      linear-gradient(90deg, rgba(15, 15, 12, 0.9) 0%, rgba(15, 15, 12, 0.74) 54%, rgba(15, 15, 12, 0.32) 100%),
+      url("/assets/work/work-33-garden-pergola-bench-960.webp");
   }
 
   .hero h1 {
@@ -1538,8 +1648,11 @@ img {
 
   .hero {
     min-height: calc(100svh - 68px);
-    padding: 100px 0 34px;
+    padding: 100px 0 calc(104px + env(safe-area-inset-bottom));
     background-position: 46% center;
+    background-image:
+      linear-gradient(90deg, rgba(15, 15, 12, 0.92) 0%, rgba(15, 15, 12, 0.78) 56%, rgba(15, 15, 12, 0.38) 100%),
+      url("/assets/work/work-29-fitted-wardrobe-assembly-640.webp");
   }
 
   .hero h1 {
@@ -1552,7 +1665,41 @@ img {
   }
 
   .page-hero {
-    padding: 108px 0 46px;
+    padding: 108px 0 calc(104px + env(safe-area-inset-bottom));
+  }
+
+  .photo-page-hero {
+    background-image:
+      linear-gradient(90deg, rgba(15, 15, 12, 0.9) 0%, rgba(15, 15, 12, 0.76) 58%, rgba(15, 15, 12, 0.42) 100%),
+      url("/assets/work/work-01-640.webp");
+  }
+
+  .handyman-page-hero,
+  .agency-hero {
+    background-image:
+      linear-gradient(90deg, rgba(15, 15, 12, 0.93) 0%, rgba(15, 15, 12, 0.8) 58%, rgba(15, 15, 12, 0.42) 100%),
+      url("/assets/work/work-29-fitted-wardrobe-assembly-640.webp");
+  }
+
+  .repairs-page-hero {
+    background-image:
+      linear-gradient(90deg, rgba(15, 15, 12, 0.94) 0%, rgba(15, 15, 12, 0.82) 58%, rgba(15, 15, 12, 0.46) 100%),
+      url("/assets/work/work-26-bathroom-shower-tiling-640.webp");
+  }
+
+  .areas-page-hero,
+  .maintenance-page-hero {
+    background-image:
+      linear-gradient(90deg, rgba(15, 15, 12, 0.94) 0%, rgba(15, 15, 12, 0.82) 58%, rgba(15, 15, 12, 0.46) 100%),
+      url("/assets/work/work-31-exterior-front-painting-640.webp");
+    background-position: center, 32% center;
+  }
+
+  .outdoor-page-hero {
+    background-image:
+      linear-gradient(90deg, rgba(15, 15, 12, 0.92) 0%, rgba(15, 15, 12, 0.8) 58%, rgba(15, 15, 12, 0.42) 100%),
+      url("/assets/work/work-33-garden-pergola-bench-640.webp");
+    background-position: center, 50% center;
   }
 
   .agency-hero {
@@ -1719,5 +1866,13 @@ img {
   .mobile-actions a:last-child {
     background: var(--green);
     color: #fff;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand strong {
+    max-width: 72px;
+    white-space: normal;
+    line-height: 1.05;
   }
 }

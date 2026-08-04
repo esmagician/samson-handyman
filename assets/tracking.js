@@ -9,24 +9,57 @@ const SAMSON_TRACKING = {
   formSubmit: 'AW-17897197249/GH7eCKa30sccEMGdhtZC',
   contactClick: 'AW-17897197249/W58oCKm30sccEMGdhtZC'
 };
+const MAX_ATTACHMENT_BYTES = 10 * 1024 * 1024;
+const ALLOWED_ATTACHMENT_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif'];
+const ALLOWED_ATTACHMENT_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp', '.heic', '.heif'];
 
 function storeClickIds() {
   if (!window.SamsonConsent || !window.SamsonConsent.canMeasure()) return;
   const params = new URLSearchParams(window.location.search);
-  ['gclid', 'gbraid', 'wbraid'].forEach((key) => {
-    const value = params.get(key);
-    if (value) localStorage.setItem(`samson_${key}`, value);
-  });
+  try {
+    ['gclid', 'gbraid', 'wbraid'].forEach((key) => {
+      const value = params.get(key);
+      if (value) localStorage.setItem(`samson_${key}`, value);
+    });
+  } catch (error) {
+    // Tracking must never interrupt browsing when storage is unavailable.
+  }
 }
 
 function hydrateClickIdFields() {
   if (!window.SamsonConsent || !window.SamsonConsent.canMeasure()) return;
-  ['gclid', 'gbraid', 'wbraid'].forEach((key) => {
-    const value = localStorage.getItem(`samson_${key}`);
-    document.querySelectorAll(`[name="${key}"]`).forEach((field) => {
-      if (value) field.value = value;
+  try {
+    ['gclid', 'gbraid', 'wbraid'].forEach((key) => {
+      const value = localStorage.getItem(`samson_${key}`);
+      document.querySelectorAll(`[name="${key}"]`).forEach((field) => {
+        if (value) field.value = value;
+      });
     });
-  });
+  } catch (error) {
+    // Quote forms still work without advertising identifiers.
+  }
+}
+
+function validateAttachment(form) {
+  const field = form.querySelector('input[type="file"][name="attachment"]');
+  if (!field) return true;
+  field.setCustomValidity('');
+  if (!field.files || !field.files.length) return true;
+
+  const file = field.files[0];
+  const lowerName = file.name.toLowerCase();
+  const allowedExtension = ALLOWED_ATTACHMENT_EXTENSIONS.some((extension) => lowerName.endsWith(extension));
+  if (!ALLOWED_ATTACHMENT_TYPES.includes(file.type) && !allowedExtension) {
+    field.setCustomValidity('Choose a JPG, PNG, WebP, HEIC or HEIF image.');
+  } else if (file.size > MAX_ATTACHMENT_BYTES) {
+    field.setCustomValidity('Choose an image smaller than 10 MB, or send larger photos by WhatsApp.');
+  }
+
+  if (!field.checkValidity()) {
+    field.reportValidity();
+    return false;
+  }
+  return true;
 }
 
 function ensureHiddenField(form, name) {
@@ -93,20 +126,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  document.querySelectorAll('a[href^="tel:"], a[href^="https://wa.me/"]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      reportAdsConversion(SAMSON_TRACKING.contactClick, link.href);
-    });
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href^="tel:"], a[href^="https://wa.me/"]');
+    if (!link) return;
+    if (!window.SamsonConsent || !window.SamsonConsent.canMeasure()) return;
+    event.preventDefault();
+    reportAdsConversion(SAMSON_TRACKING.contactClick, link.href);
   });
 
   document.querySelectorAll('form[data-track-form="quote"]').forEach((form) => {
     form.addEventListener('submit', (event) => {
-      if (!form.checkValidity()) return;
+      if (!validateAttachment(form) || !form.checkValidity()) {
+        event.preventDefault();
+        form.reportValidity();
+        return;
+      }
       event.preventDefault();
       setSuccessRedirect(form);
       form.submit();
     });
+
+    const attachment = form.querySelector('input[type="file"][name="attachment"]');
+    if (attachment) attachment.addEventListener('change', () => validateAttachment(form));
   });
 
   if (document.querySelector('[data-form-success]')) {
