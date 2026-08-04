@@ -2,6 +2,9 @@
   var GOOGLE_ADS_ID = "AW-17897197249";
   var FORM_CONVERSION_LABEL = "AW-17897197249/GH7eCKa30sccEMGdhtZC";
   var CONTACT_CONVERSION_LABEL = "AW-17897197249/W58oCKm30sccEMGdhtZC";
+  var MAX_ATTACHMENT_BYTES = 10 * 1024 * 1024;
+  var ALLOWED_ATTACHMENT_TYPES = ["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif"];
+  var ALLOWED_ATTACHMENT_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif"];
   var header = document.querySelector("[data-header]");
   var primaryNav = header && header.querySelector(".site-nav");
 
@@ -103,12 +106,14 @@
   function storeClickIds() {
     if (!window.SamsonConsent || !window.SamsonConsent.canMeasure()) return;
     var params = new URLSearchParams(window.location.search);
-    ["gclid", "gbraid", "wbraid"].forEach(function (key) {
-      var value = params.get(key);
-      if (value) {
-        window.localStorage.setItem("samson_" + key, value);
-      }
-    });
+    try {
+      ["gclid", "gbraid", "wbraid"].forEach(function (key) {
+        var value = params.get(key);
+        if (value) window.localStorage.setItem("samson_" + key, value);
+      });
+    } catch (error) {
+      // Tracking must never interrupt browsing when storage is unavailable.
+    }
   }
 
   function ensureHiddenField(form, name) {
@@ -142,12 +147,14 @@
 
   function hydrateForm(form) {
     if (window.SamsonConsent && window.SamsonConsent.canMeasure()) {
-      ["gclid", "gbraid", "wbraid"].forEach(function (key) {
-        var value = window.localStorage.getItem("samson_" + key);
-        if (value) {
-          ensureHiddenField(form, key).value = value;
-        }
-      });
+      try {
+        ["gclid", "gbraid", "wbraid"].forEach(function (key) {
+          var value = window.localStorage.getItem("samson_" + key);
+          if (value) ensureHiddenField(form, key).value = value;
+        });
+      } catch (error) {
+        // The quote can still be submitted without advertising identifiers.
+      }
     }
 
     var emailField = form.querySelector('input[name="email"]');
@@ -155,6 +162,30 @@
     if (replyToField && emailField) {
       replyToField.value = emailField.value;
     }
+  }
+
+  function validateAttachment(form) {
+    var field = form.querySelector('input[type="file"][name="attachment"]');
+    if (!field) return true;
+    field.setCustomValidity("");
+    if (!field.files || !field.files.length) return true;
+
+    var file = field.files[0];
+    var lowerName = file.name.toLowerCase();
+    var allowedExtension = ALLOWED_ATTACHMENT_EXTENSIONS.some(function (extension) {
+      return lowerName.endsWith(extension);
+    });
+    if (ALLOWED_ATTACHMENT_TYPES.indexOf(file.type) === -1 && !allowedExtension) {
+      field.setCustomValidity("Choose a JPG, PNG, WebP, HEIC or HEIF image.");
+    } else if (file.size > MAX_ATTACHMENT_BYTES) {
+      field.setCustomValidity("Choose an image smaller than 10 MB, or send larger photos by WhatsApp.");
+    }
+
+    if (!field.checkValidity()) {
+      field.reportValidity();
+      return false;
+    }
+    return true;
   }
 
   function reportAdsConversion(sendTo, url, callback) {
@@ -181,18 +212,19 @@
   }
 
   function setupContactTracking() {
-    document.querySelectorAll('a[href^="tel:"], a[href^="https://wa.me/"]').forEach(function (link) {
-      link.addEventListener("click", function (event) {
-        event.preventDefault();
-        reportAdsConversion(CONTACT_CONVERSION_LABEL, link.href);
-      });
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest('a[href^="tel:"], a[href^="https://wa.me/"]');
+      if (!link) return;
+      if (!window.SamsonConsent || !window.SamsonConsent.canMeasure()) return;
+      event.preventDefault();
+      reportAdsConversion(CONTACT_CONVERSION_LABEL, link.href);
     });
   }
 
   function setupFormTracking() {
     document.querySelectorAll("form.quote-form").forEach(function (form) {
       form.addEventListener("submit", function (event) {
-        if (!form.checkValidity()) {
+        if (!validateAttachment(form) || !form.checkValidity()) {
           event.preventDefault();
           form.reportValidity();
           return;
@@ -211,6 +243,13 @@
 
         form.submit();
       });
+
+      var attachment = form.querySelector('input[type="file"][name="attachment"]');
+      if (attachment) {
+        attachment.addEventListener("change", function () {
+          validateAttachment(form);
+        });
+      }
     });
   }
 

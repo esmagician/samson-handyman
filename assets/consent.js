@@ -9,6 +9,7 @@
   var preferences = null;
   var settingsButton = null;
   var previousFocus = null;
+  var inertElements = [];
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () {
@@ -57,12 +58,16 @@
   }
 
   function clearAdvertisingStorage() {
-    CLICK_ID_KEYS.forEach(function (key) {
-      window.localStorage.removeItem("samson_" + key);
-      document.querySelectorAll('[name="' + key + '"]').forEach(function (field) {
-        field.value = "";
+    try {
+      CLICK_ID_KEYS.forEach(function (key) {
+        window.localStorage.removeItem("samson_" + key);
+        document.querySelectorAll('[name="' + key + '"]').forEach(function (field) {
+          field.value = "";
+        });
       });
-    });
+    } catch (error) {
+      // Continue clearing cookies when storage is unavailable.
+    }
 
     var cookiePrefixes = ["_ga", "_gid", "_gat", "_gcl_", "__gads", "__gpi"];
     var hostnameParts = window.location.hostname.split(".");
@@ -132,7 +137,7 @@
     if (document.querySelector('link[href^="/assets/consent.css"]')) return;
     var stylesheet = document.createElement("link");
     stylesheet.rel = "stylesheet";
-    stylesheet.href = "/assets/consent.css?v=20260718";
+    stylesheet.href = "/assets/consent.css?v=20260804-3";
     document.head.appendChild(stylesheet);
   }
 
@@ -201,6 +206,50 @@
     settingsButton.hidden = !hasChoice || (preferences && !preferences.hidden);
   }
 
+  function setBackgroundInert(shouldInert) {
+    if (shouldInert) {
+      inertElements = [];
+      Array.prototype.forEach.call(document.body.children, function (element) {
+        if (element === preferences) return;
+        inertElements.push({
+          element: element,
+          ariaHidden: element.getAttribute("aria-hidden"),
+          hadInert: element.hasAttribute("inert")
+        });
+        element.setAttribute("inert", "");
+        element.setAttribute("aria-hidden", "true");
+      });
+      return;
+    }
+
+    inertElements.forEach(function (item) {
+      if (!item.hadInert) item.element.removeAttribute("inert");
+      if (item.ariaHidden === null) {
+        item.element.removeAttribute("aria-hidden");
+      } else {
+        item.element.setAttribute("aria-hidden", item.ariaHidden);
+      }
+    });
+    inertElements = [];
+  }
+
+  function trapDialogFocus(event) {
+    if (event.key !== "Tab" || !preferences || preferences.hidden) return;
+    var focusable = preferences.querySelectorAll(
+      'button:not([disabled]), input:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+    );
+    if (!focusable.length) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
   function openPreferences() {
     if (!preferences) return;
     previousFocus = document.activeElement;
@@ -212,6 +261,7 @@
     personalisationInput.disabled = !measurementInput.checked;
 
     preferences.hidden = false;
+    setBackgroundInert(true);
     document.body.classList.add("samson-consent-modal-open");
     updateVisibility();
     preferences.querySelector('[data-consent-action="save"]').focus();
@@ -220,6 +270,7 @@
   function closePreferences() {
     if (!preferences) return;
     preferences.hidden = true;
+    setBackgroundInert(false);
     document.body.classList.remove("samson-consent-modal-open");
     updateVisibility();
     if (previousFocus && typeof previousFocus.focus === "function") {
@@ -268,6 +319,8 @@
     banner = document.querySelector("[data-consent-banner]");
     preferences = document.querySelector("[data-consent-preferences]");
     settingsButton = document.querySelector(".samson-consent-settings");
+    var footerNavigation = document.querySelector(".site-footer nav, .footer-links");
+    if (footerNavigation && settingsButton) footerNavigation.appendChild(settingsButton);
 
     document.addEventListener("click", function (event) {
       var control = event.target.closest("[data-consent-action]");
@@ -289,7 +342,9 @@
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && preferences && !preferences.hidden) {
         closePreferences();
+        return;
       }
+      trapDialogFocus(event);
     });
 
     updateVisibility();
