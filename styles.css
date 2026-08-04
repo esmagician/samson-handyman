@@ -972,6 +972,50 @@ p.lead-copy {
   background: var(--paper);
 }
 
+.before-after-section {
+  background: #fff;
+}
+
+.before-after-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.before-after-grid.one {
+  grid-template-columns: minmax(0, 820px);
+}
+
+.before-after-card {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(45, 38, 26, 0.08);
+}
+
+.before-after-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.before-after-card figcaption {
+  padding: 16px 18px 18px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.before-after-card figcaption strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--ink);
+  font-size: 1.04rem;
+}
+
 .work-gallery {
   columns: 3 280px;
   column-gap: 16px;
@@ -1810,6 +1854,10 @@ p.lead-copy {
 
   .work-gallery {
     columns: 1;
+  }
+
+  .before-after-grid {
+    grid-template-columns: 1fr;
   }
 
   .gallery-cta h2 {

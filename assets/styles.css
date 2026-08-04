@@ -298,6 +298,46 @@ p {
   font-weight: 900;
 }
 
+.before-after-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.before-after-grid.one {
+  grid-template-columns: minmax(0, 820px);
+}
+
+.before-after-card {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 14px 34px rgba(45, 38, 26, 0.08);
+}
+
+.before-after-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.before-after-card figcaption {
+  padding: 1rem 1.1rem 1.1rem;
+  color: var(--muted);
+}
+
+.before-after-card figcaption strong {
+  display: block;
+  margin-bottom: .25rem;
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+
 .quote-form {
   display: grid;
   gap: .85rem;
@@ -448,6 +488,7 @@ input[type="file"]::file-selector-button {
   .split,
   .grid,
   .local-work-grid,
+  .before-after-grid,
   .form-grid {
     grid-template-columns: 1fr;
   }
