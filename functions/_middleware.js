@@ -16,8 +16,9 @@ export function onRequest(context) {
   }
 
   const isCustomDomain = url.hostname === PRIMARY_HOST || url.hostname === APEX_HOST;
+  const tlsVersion = context.request.cf?.tlsVersion;
   const edgeConnectionWasInsecure =
-    Boolean(context.request.cf) && !context.request.cf.tlsVersion;
+    Boolean(context.request.cf) && !/^TLSv1\.[0-3]$/.test(tlsVersion || "");
   const needsHttps =
     url.protocol !== "https:" ||
     forwardedProtocol === "http" ||
