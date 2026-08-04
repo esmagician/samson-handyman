@@ -16,10 +16,13 @@ export function onRequest(context) {
   }
 
   const isCustomDomain = url.hostname === PRIMARY_HOST || url.hostname === APEX_HOST;
+  const edgeConnectionWasInsecure =
+    Boolean(context.request.cf) && !context.request.cf.tlsVersion;
   const needsHttps =
     url.protocol !== "https:" ||
     forwardedProtocol === "http" ||
-    visitorProtocol === "http";
+    visitorProtocol === "http" ||
+    edgeConnectionWasInsecure;
   const needsPrimaryHost = url.hostname === APEX_HOST;
 
   if (isCustomDomain && (needsHttps || needsPrimaryHost)) {
