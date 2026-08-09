@@ -29,7 +29,7 @@
 
     var isAgencyPage = document.body.classList.contains("agency-page");
     primaryNav.innerHTML = (isAgencyPage ? [
-      '<a href="#agency-services">Services</a>',
+      '<a href="#rental-turnaround">Void turnarounds</a>',
       '<a href="/photos/">Work</a>',
       '<a href="#agency-process">How it works</a>',
       '<a href="#agency-proof">Reviews</a>',
