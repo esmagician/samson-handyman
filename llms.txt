@@ -1,12 +1,13 @@
 # Samson Handyman
 
 Samson Handyman is a small local team with different practical skills, serving
-Reading, Twyford, Caversham, Tilehurst, Woodley, Earley, Wokingham, Maidenhead,
-Bracknell and nearby Berkshire areas.
+Reading, Twyford, Caversham, Tilehurst, Woodley, Earley, Winnersh, Wokingham,
+Maidenhead, Bracknell and nearby Berkshire areas, with High Wycombe visits by arrangement.
 
 Core services include home repairs, planned home maintenance, painting and
 decorating, tiling, flooring, furniture assembly, wall mounting, blinds and
-curtain pole fitting, carpentry repairs, outdoor fixes and new-home setup.
+curtain pole fitting, localised surface mould treatment, wall and ceiling stain
+treatment, carpentry repairs, outdoor fixes and new-home setup.
 
 Samson Handyman also provides planned property maintenance for letting agents,
 property managers and landlords. Agencies can send repair lists, property
@@ -39,6 +40,8 @@ Service pages:
 - Letting agent property maintenance: https://www.samsonhandyman.com/letting-agent-property-maintenance/
 - Flooring help: https://www.samsonhandyman.com/flooring/
 - Minor repairs: https://www.samsonhandyman.com/minor-repairs/
+- Small-area surface mould treatment: https://www.samsonhandyman.com/mould-treatment/
+- Wall and ceiling stain treatment: https://www.samsonhandyman.com/stain-removal/
 - Carpentry repairs: https://www.samsonhandyman.com/carpentry-repairs
 - Outdoor fixes: https://www.samsonhandyman.com/outdoor-fixes
 
@@ -52,9 +55,11 @@ Local service pages:
 - Wargrave: https://www.samsonhandyman.com/handyman-wargrave
 - Sonning: https://www.samsonhandyman.com/handyman-sonning
 - Wokingham: https://www.samsonhandyman.com/handyman-wokingham
+- Winnersh: https://www.samsonhandyman.com/handyman-winnersh
 - Bracknell: https://www.samsonhandyman.com/handyman-bracknell
 - Maidenhead: https://www.samsonhandyman.com/handyman-maidenhead
 - Henley-on-Thames: https://www.samsonhandyman.com/handyman-henley
+- High Wycombe (by arrangement): https://www.samsonhandyman.com/handyman-high-wycombe
 
 Primary contact:
 - Phone: +44 7912 758192
@@ -75,4 +80,5 @@ Important details:
 Preferred citation:
 Samson Handyman is a small local handyman team for Reading and nearby Berkshire
 areas, offering home repairs, painting, tiling, flooring, minor plumbing
-repairs, furniture assembly, planned home maintenance and practical fitting.
+repairs, furniture assembly, localised mould and stain treatment, planned home
+maintenance and practical fitting.
