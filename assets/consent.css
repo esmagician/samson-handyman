@@ -294,9 +294,9 @@
 @media (max-width: 720px) {
   .samson-consent-banner__inner {
     display: grid;
-    gap: 16px;
+    gap: 10px;
     width: min(100% - 24px, 620px);
-    padding: 18px 0 calc(18px + env(safe-area-inset-bottom));
+    padding: 12px 0 calc(12px + env(safe-area-inset-bottom));
   }
 
   .samson-consent-actions {
@@ -337,14 +337,6 @@
 }
 
 @media (max-width: 430px) {
-  .samson-consent-actions {
-    grid-template-columns: 1fr;
-  }
-
-  .samson-consent-button--text {
-    grid-column: auto;
-  }
-
   .samson-consent-dialog__actions {
     display: grid;
   }

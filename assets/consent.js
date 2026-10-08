@@ -137,7 +137,7 @@
     if (document.querySelector('link[href^="/assets/consent.css"]')) return;
     var stylesheet = document.createElement("link");
     stylesheet.rel = "stylesheet";
-    stylesheet.href = "/assets/consent.css?v=20260804-3";
+    stylesheet.href = "/assets/consent.css?v=20261008-1";
     document.head.appendChild(stylesheet);
   }
 
@@ -203,6 +203,7 @@
     if (!banner || !settingsButton) return;
     var hasChoice = currentChoice !== null;
     banner.hidden = hasChoice;
+    document.body.classList.toggle("privacy-banner-open", !hasChoice);
     settingsButton.hidden = !hasChoice || (preferences && !preferences.hidden);
   }
 

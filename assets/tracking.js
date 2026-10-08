@@ -142,6 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       event.preventDefault();
+      if (form.dataset.adsSubmitting === 'true') return;
+      form.dataset.adsSubmitting = 'true';
       setSuccessRedirect(form);
       form.submit();
     });
@@ -164,7 +166,12 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (error) {
         return;
       }
-      if (!alreadyReported) reportAdsConversion(SAMSON_TRACKING.formSubmit);
+      if (!alreadyReported) {
+        if (window.SamsonConsent && window.SamsonConsent.canMeasure()) {
+          window.gtag('event', 'lead_submitted', { contact_method: 'quote_form' });
+        }
+        reportAdsConversion(SAMSON_TRACKING.formSubmit);
+      }
     }
   }
 });

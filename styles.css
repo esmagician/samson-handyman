@@ -1931,3 +1931,27 @@ p.lead-copy {
     line-height: 1.05;
   }
 }
+
+.contact-help,
+.quote-pricing-note {
+  margin: 0 0 18px;
+  color: #39463c;
+  line-height: 1.6;
+}
+
+.quote-checklist {
+  margin: 0;
+  padding-left: 22px;
+  line-height: 1.7;
+}
+
+.quote-checklist li + li { margin-top: 12px; }
+.pricing-section { background: #f4f6ee; }
+.info-card h3 a { text-underline-offset: 4px; }
+.before-after-card figcaption a { color: #18583d; text-decoration: underline; }
+.privacy-banner-open .mobile-actions { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}

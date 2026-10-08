@@ -430,6 +430,15 @@ input[type="file"]::file-selector-button {
   display: none;
 }
 
+.contact-help,
+.quote-pricing-note {
+  margin: 0 0 18px;
+  color: #39463c;
+  line-height: 1.6;
+}
+
+.privacy-banner-open .mobile-actions { display: none; }
+
 .site-footer p {
   margin: .3rem 0 0;
   color: rgba(255,255,255,.7);
