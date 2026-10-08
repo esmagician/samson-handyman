@@ -28,6 +28,7 @@
     if (!header || !primaryNav) return;
 
     var isAgencyPage = document.body.classList.contains("agency-page");
+    var contactHref = document.getElementById("contact") ? "#contact" : "/contact/";
     primaryNav.innerHTML = (isAgencyPage ? [
       '<a href="#rental-turnaround">Void turnarounds</a>',
       '<a href="/photos/">Work</a>',
@@ -41,7 +42,7 @@
       '<a href="/letting-agent-property-maintenance/">Landlords &amp; agents</a>',
       '<a href="/#proof">Reviews</a>',
       '<a href="/areas/">Areas</a>',
-      '<a href="/#contact">Contact</a>'
+      '<a href="' + contactHref + '">Contact</a>'
     ]).join("");
 
     var toggle = document.createElement("button");
@@ -270,6 +271,9 @@
       return;
     }
 
+    if (window.SamsonConsent && window.SamsonConsent.canMeasure()) {
+      window.gtag("event", "lead_submitted", { contact_method: "quote_form" });
+    }
     reportAdsConversion(FORM_CONVERSION_LABEL);
   }
 
