@@ -27,3 +27,5 @@ Before publishing, check:
 - Both page templates work on mobile, including navigation and privacy controls.
 
 Assets have immutable cache headers. Change their version query strings in HTML (and the consent stylesheet version in `assets/consent.js`) whenever updating shared JavaScript or CSS.
+
+GA4 uses the existing Samson Handyman property (`G-LPJCTMQJGN`). `assets/analytics.js` configures it once, only on the production apex/www hostname after measurement consent. It loads immediately after consent.js, before confirmed-enquiry events. Consent notice version 2026-10-08 refreshes older choices for the updated measurement description. Preview and localhost traffic is excluded from GA4.

@@ -2,7 +2,7 @@
   "use strict";
 
   var STORAGE_KEY = "samson_consent_v2";
-  var NOTICE_VERSION = "2026-07-17";
+  var NOTICE_VERSION = "2026-10-08";
   var CLICK_ID_KEYS = ["gclid", "gbraid", "wbraid"];
   var currentChoice = null;
   var banner = null;
@@ -148,7 +148,7 @@
       '    <div class="samson-consent-copy">',
       '      <p class="samson-consent-kicker">Your privacy choices</p>',
       '      <h2 id="samson-consent-title">Choose how this site uses data</h2>',
-      '      <p>We use essential storage to remember your choice. With your permission, Samson Handyman and Google use cookies and data to measure enquiries and improve advertising. You can accept, reject or manage these uses.</p>',
+      '      <p>We use essential storage to remember your choice. With your permission, Samson Handyman and Google use cookies and data to measure visits and enquiries, and improve advertising. You can accept, reject or manage these uses.</p>',
       '      <p class="samson-consent-links"><a href="/privacy-policy/">Privacy policy</a><a href="https://business.safety.google/privacy/" target="_blank" rel="noopener noreferrer">How Google uses data</a></p>',
       "    </div>",
       '    <div class="samson-consent-actions">',
@@ -176,7 +176,7 @@
       '        <span class="samson-consent-always">Always active</span>',
       "      </div>",
       '      <label class="samson-consent-option" for="samson-consent-measurement">',
-      '        <div><strong>Measurement</strong><span>Allows Google Ads to measure quote requests, calls and WhatsApp clicks.</span></div>',
+      '        <div><strong>Measurement</strong><span>Allows Google Analytics and Google Ads to measure visits, quote requests and contact clicks.</span></div>',
       '        <span class="samson-consent-switch"><input id="samson-consent-measurement" type="checkbox"><span aria-hidden="true"></span></span>',
       "      </label>",
       '      <label class="samson-consent-option" for="samson-consent-personalisation">',
