@@ -12,7 +12,10 @@
   window.gtag = window.gtag || function () {
     window.dataLayer.push(arguments);
   };
-  window.gtag("js", new Date());
+  if (!window.SamsonGoogleTagInitialised) {
+    window.gtag("js", new Date());
+    window.SamsonGoogleTagInitialised = true;
+  }
   window.gtag("config", GOOGLE_ADS_ID);
 
   function updateHeader() {
