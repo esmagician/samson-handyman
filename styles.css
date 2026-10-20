@@ -364,6 +364,9 @@ img {
 #proof,
 #areas,
 #contact,
+#latest-work,
+#tv-slat-wall-project,
+#planter-repair-project,
 #faq {
   scroll-margin-top: 104px;
 }
@@ -1525,6 +1528,9 @@ p.lead-copy {
   #proof,
   #areas,
   #contact,
+  #latest-work,
+  #tv-slat-wall-project,
+  #planter-repair-project,
   #faq {
     scroll-margin-top: 134px;
   }
@@ -1954,4 +1960,93 @@ p.lead-copy {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
+
+
+/* Work examples keep the full photograph visible at every screen size. */
+.project-example {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+  gap: clamp(24px, 5vw, 70px);
+  align-items: center;
+}
+
+.project-example h2 {
+  margin: 0 0 20px;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1.15;
+}
+
+.project-example p {
+  line-height: 1.7;
+}
+
+.project-photo {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.project-photo > a {
+  display: block;
+  background: #f2ecdf;
+}
+
+.project-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project-photo figcaption {
+  padding: 16px 18px 18px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.project-photo figcaption strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+.project-photo figcaption a {
+  color: var(--green);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.latest-work-section {
+  background: var(--green-soft);
+}
+
+.latest-work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.latest-work-grid .project-photo img {
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+}
+
+@media (max-width: 780px) {
+  .project-example,
+  .latest-work-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project-example .project-photo {
+    width: min(100%, 460px);
+    justify-self: center;
+  }
+
+  .latest-work-grid .project-photo img {
+    aspect-ratio: auto;
+  }
 }
