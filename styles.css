@@ -2050,3 +2050,127 @@ p.lead-copy {
     aspect-ratio: auto;
   }
 }
+
+.home-hero .hero-actions {
+  display: flex;
+  width: auto;
+}
+
+.home-hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 20px;
+  margin: 10px 0 0;
+}
+
+.home-hero-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.home-job-list {
+  padding: 32px 0;
+  background: var(--green-soft);
+}
+
+.home-job-list-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.home-job-list h2 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+}
+
+.home-job-list p {
+  max-width: 620px;
+  margin: 8px 0 0;
+  line-height: 1.5;
+}
+
+.home-job-list .btn {
+  flex-shrink: 0;
+}
+
+.home-projects .before-after-card figcaption a {
+  color: #18583d;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+#bathroom-project,
+#wardrobe-project {
+  scroll-margin-top: 92px;
+}
+
+@media (max-width: 680px) {
+  .home-hero {
+    min-height: 0;
+    padding: 96px 0 30px;
+  }
+
+  .home-hero .eyebrow {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    text-transform: none;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(1.9rem, 8.5vw, 2.6rem);
+  }
+
+  .home-hero .hero-copy {
+    margin-top: 12px;
+    line-height: 1.45;
+  }
+
+  .home-hero .hero-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .home-hero .hero-actions .btn {
+    min-height: 46px;
+    padding: 8px;
+    font-size: 0.92rem;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  .home-hero-links {
+    gap: 0 16px;
+    font-size: 0.9rem;
+  }
+
+  .home-job-list-inner {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+}
+
+.agency-form-options {
+  margin: 0 0 14px;
+  border-top: 1px solid rgba(255,255,255,.22);
+}
+
+.agency-form-options > summary {
+  padding: 14px 0;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+#completion-record dd {
+  margin: 4px 0 16px;
+  line-height: 1.5;
+}

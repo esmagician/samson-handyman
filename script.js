@@ -83,7 +83,7 @@
     var actions = document.createElement("nav");
     actions.className = "mobile-actions is-visible";
     actions.setAttribute("aria-label", "Quick contact");
-    actions.innerHTML = '<a href="tel:+447912758192">Call Samson</a><a href="https://wa.me/447912758192">WhatsApp</a>';
+    actions.innerHTML = '<a href="tel:+447912758192">Call Samson</a><a href="https://wa.me/447912758192?text=Hi%20Edvardas%2C%20could%20you%20quote%20for%20this%20job%3F%0APostcode%3A%20%0AJob%20list%3A%20%0APreferred%20timing%3A%20">WhatsApp</a>';
     document.body.appendChild(actions);
   }
 

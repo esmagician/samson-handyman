@@ -15,6 +15,8 @@ Business details confirmed by Edvardas on 8 October 2026:
 
 Forms use FormSubmit and the existing business email. `assets/enquiry.js` provides the shared phone-or-email requirement, email reply handling and consent-based enquiry source fields. Keep a required phone field and optional email in the HTML as the no-JavaScript fallback. The shared script allows either contact method when JavaScript is available.
 
+Quote notifications use FormSubmit’s basic template. The shared script puts the phone number and the customer’s original job description first, with common phone-number separators removed for copying. Keep their existing field names for incoming-mail processing. Agency enquiries can include one PDF and two photos, with a combined 10 MB limit.
+
 `script.js` serves the main templates; `assets/tracking.js` serves older pages. Keep confirmed-form conversion labels and submission-token checks consistent in both. A contact click is an expression of interest, not a confirmed call or booked job. Separate `contact_click` metadata identifies phone and WhatsApp interactions; existing Google Ads click conversions remain configured as before.
 
 Before publishing, check:

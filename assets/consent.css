@@ -345,3 +345,46 @@
     align-items: flex-start;
   }
 }
+
+.samson-consent-banner {
+  max-height: 70vh;
+  max-height: 70svh;
+  overflow: auto;
+}
+
+.samson-consent-copy a {
+  color: #174f3c;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.samson-consent-actions {
+  flex: 0 1 360px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.samson-consent-actions .samson-consent-button {
+  padding: 6px 9px;
+}
+
+.samson-consent-actions .samson-consent-button--text {
+  grid-column: auto;
+}
+
+@media (max-width: 720px) {
+  .samson-consent-banner__inner {
+    gap: 8px;
+    padding: 10px 0 calc(10px + env(safe-area-inset-bottom));
+  }
+
+  .samson-consent-copy h2 {
+    font-size: 1rem;
+  }
+
+  .samson-consent-copy p {
+    margin-top: 3px;
+    font-size: 0.86rem;
+    line-height: 1.4;
+  }
+}
