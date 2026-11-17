@@ -137,7 +137,7 @@
     if (document.querySelector('link[href^="/assets/consent.css"]')) return;
     var stylesheet = document.createElement("link");
     stylesheet.rel = "stylesheet";
-    stylesheet.href = "/assets/consent.css?v=20261008-1";
+    stylesheet.href = "/assets/consent.css?v=20261117-1";
     document.head.appendChild(stylesheet);
   }
 
@@ -146,15 +146,13 @@
       '<section class="samson-consent-banner" data-consent-banner role="region" aria-labelledby="samson-consent-title">',
       '  <div class="samson-consent-banner__inner">',
       '    <div class="samson-consent-copy">',
-      '      <p class="samson-consent-kicker">Your privacy choices</p>',
-      '      <h2 id="samson-consent-title">Choose how this site uses data</h2>',
-      '      <p>We use essential storage to remember your choice. With your permission, Samson Handyman and Google use cookies and data to measure visits and enquiries, and improve advertising. You can accept, reject or manage these uses.</p>',
-      '      <p class="samson-consent-links"><a href="/privacy-policy/">Privacy policy</a><a href="https://business.safety.google/privacy/" target="_blank" rel="noopener noreferrer">How Google uses data</a></p>',
+      '      <h2 id="samson-consent-title">Cookie choices</h2>',
+      '      <p>Essential storage remembers your choice. Optional <a href="https://business.safety.google/privacy/" target="_blank" rel="noopener noreferrer">Google cookies</a> measure visits and enquiries and personalise ads. <a href="/privacy-policy/">Privacy policy</a></p>',
       "    </div>",
       '    <div class="samson-consent-actions">',
-      '      <button type="button" class="samson-consent-button samson-consent-button--primary" data-consent-action="accept">Accept all</button>',
-      '      <button type="button" class="samson-consent-button" data-consent-action="reject">Reject non-essential</button>',
-      '      <button type="button" class="samson-consent-button samson-consent-button--text" data-consent-action="manage">Manage choices</button>',
+      '      <button type="button" class="samson-consent-button" data-consent-action="accept">Accept all</button>',
+      '      <button type="button" class="samson-consent-button" data-consent-action="reject">Reject optional</button>',
+      '      <button type="button" class="samson-consent-button samson-consent-button--text" data-consent-action="manage" aria-label="Manage cookie choices">Manage</button>',
       "    </div>",
       "  </div>",
       "</section>"

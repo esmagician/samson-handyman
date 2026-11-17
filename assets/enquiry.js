@@ -75,10 +75,34 @@
     response.disabled = !hasEmail;
   }
 
+  function formatEmailFields(event) {
+    var data = event.formData;
+    var phone = data.get('phone');
+    if (typeof phone === 'string') {
+      // Keep international prefixes, extensions and unusual entries intact.
+      var compact = phone.trim().replace(/^(\+44|0044)\s*\(0\)/, '$1').replace(/[\s().-]/g, '');
+      if (/^\+?\d{7,15}$/.test(compact)) data.set('phone', compact);
+    }
+    // FormSubmit displays fields in submission order. Keep the job text exactly
+    // as entered, and retain every supporting field and file after the essentials.
+    var first = ['phone', 'details', 'job_list', 'email', 'name', 'area', 'property_address'];
+    var rest = Array.from(data.keys()).filter(function (key) { return !first.includes(key); });
+    var ordered = new FormData();
+    new Set(first.concat(rest)).forEach(function (key) {
+      data.getAll(key).forEach(function (value) {
+        if (first.includes(key) && value === '') return;
+        ordered.append(key, value);
+      });
+      data.delete(key);
+    });
+    ordered.forEach(function (value, key) { data.append(key, value); });
+  }
+
   function setupForm(form, index) {
     var phone = form.querySelector('[name="phone"]');
     var email = form.querySelector('[name="email"]');
     if (!phone || !email) return;
+    form.addEventListener('formdata', formatEmailFields);
     var hint = form.querySelector('.contact-help');
     if (hint) {
       hint.id = 'contact-help-' + index;
